@@ -1425,10 +1425,10 @@
     <div class="hero-eyebrow"><span></span><span data-i18n="hero_eyebrow">Herramienta gratuita de estimación</span></div>
     <h1><span data-i18n="hero_h1">Calculadora de costo para<br>construir casa en </span><em>Costa Rica</em></h1>
     <p class="hero-sub"><span data-i18n="hero_sub">Estime en minutos cuánto podría costar construir su casa considerando tamaño, acabados, ubicación y financiamiento.</span></p>
-    <a href="#calculadora" class="hero-btn">
+    <button onclick="iniciarCalculadora()" class="hero-btn">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="8" y1="15" x2="12" y2="15"/></svg>
       <span data-i18n="hero_btn">Calcular costo de construcción</span>
-    </a>
+    </button>
     <div class="hero-stats">
       <div class="stat"><div class="stat-num" id="hero-stat-m2">₡285K–430K</div><div class="stat-label" data-i18n="stat1">Costo por m² base</div></div>
       <div class="stat"><div class="stat-num">12%</div><div class="stat-label" data-i18n="stat2">Honorarios profesionales</div></div>
@@ -1570,8 +1570,39 @@
   </div>
 </section>
 
+<!-- SEO & ADSENSE CONTENT -->
+<section id="seo-content" style="max-width: 800px; margin: 20px auto; padding: 0 20px; color: var(--gray-700); line-height: 1.8;">
+  <h2 data-i18n="seo_h2" style="font-family: 'Instrument Serif', serif; font-size: 2rem; color: var(--green-800); margin-bottom: 20px;">¿Cuánto cuesta construir en Costa Rica en 2026?</h2>
+  <p data-i18n="seo_p1" style="margin-bottom: 16px;">
+    La construcción de una casa en Costa Rica implica múltiples factores que pueden afectar significativamente el presupuesto final. El costo por metro cuadrado puede variar desde los ₡285,000 hasta más de ₡430,000 dependiendo de los acabados, la topografía del terreno y la ubicación.
+  </p>
+
+  <!-- AdSense Slot 1 -->
+  <div class="adsense-slot" style="margin: 12px 0; text-align: center; min-height: 0; display: flex; justify-content: center;">
+    <!-- Reemplazar con tag de Google AdSense -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-5515541580647235"
+         data-ad-slot="XXXXXXXXXX"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
+  <h3 data-i18n="seo_h3" style="font-size: 1.2rem; margin: 16px 0 12px; color: var(--gray-900);">Factores clave que influyen en el precio</h3>
+  <ul style="margin-left: 20px; list-style-type: disc; margin-bottom: 24px;">
+    <li data-i18n="seo_li1" style="margin-bottom: 8px;"><strong>Acabados y materiales:</strong> Pisos de cerámica vs porcelanato, tipo de grifería, y estructura de techo tienen impacto directo en los costos directos.</li>
+    <li data-i18n="seo_li2" style="margin-bottom: 8px;"><strong>Topografía del suelo:</strong> Un lote inclinado requerirá mayores movimientos de tierra y muros de retención, aumentando los costos preliminares.</li>
+    <li data-i18n="seo_li3" style="margin-bottom: 8px;"><strong>Honorarios profesionales:</strong> El Colegio Federado de Ingenieros y Arquitectos (CFIA) establece tarifas mínimas para el diseño, planos y dirección técnica.</li>
+  </ul>
+
+  <p data-i18n="seo_p2" style="margin-bottom: 24px;">Utiliza nuestra calculadora para obtener un desglose detallado de los gastos de construcción, incluyendo el financiamiento con las tasas actuales de los principales bancos de Costa Rica.</p>
+</section>
+
 <!-- MAIN -->
-<div class="main-container" id="calculadora">
+<div class="main-container" id="calculadora" style="display: none;">
 
   <!-- Moneda bar moved to nav — fallback for mobile (hidden on desktop via CSS) -->
   <div id="moneda-bar-mobile" style="display:none;align-items:center;flex-wrap:wrap;gap:10px;background:#f0fdf4;border:1.5px solid #86efac;border-radius:10px;padding:8px 14px;margin-bottom:14px;">
@@ -3088,6 +3119,14 @@ const LANG = {
     rov_sub:'Consultando BCCR · NY Fed · FRED<br>La página estará lista en segundos.',
     rov_title_offline:'Sin conexión',
     rov_sub_offline:'Se usarán valores de referencia recientes.',
+    // SEO Content
+    seo_h2: '¿Cuánto cuesta construir en Costa Rica en 2026?',
+    seo_p1: 'La construcción de una casa en Costa Rica implica múltiples factores que pueden afectar significativamente el presupuesto final. El costo por metro cuadrado puede variar desde los ₡285,000 hasta más de ₡430,000 dependiendo de los acabados, la topografía del terreno y la ubicación.',
+    seo_h3: 'Factores clave que influyen en el precio',
+    seo_li1: '<strong>Acabados y materiales:</strong> Pisos de cerámica vs porcelanato, tipo de grifería, y estructura de techo tienen impacto directo en los costos directos.',
+    seo_li2: '<strong>Topografía del suelo:</strong> Un lote inclinado requerirá mayores movimientos de tierra y muros de retención, aumentando los costos preliminares.',
+    seo_li3: '<strong>Honorarios profesionales:</strong> El Colegio Federado de Ingenieros y Arquitectos (CFIA) establece tarifas mínimas para el diseño, planos y dirección técnica.',
+    seo_p2: 'Utiliza nuestra calculadora para obtener un desglose detallado de los gastos de construcción, incluyendo el financiamiento con las tasas actuales de los principales bancos de Costa Rica.'
   },
   en: {
     // Nav / hero
@@ -3512,7 +3551,14 @@ const LANG = {
     rov_sub:'Fetching from BCCR · NY Fed · FRED<br>The page will be ready in seconds.',
     rov_title_offline:'No connection',
     rov_sub_offline:'Recent reference values will be used.',
-
+    // SEO Content
+    seo_h2: 'How much does it cost to build in Costa Rica in 2026?',
+    seo_p1: 'Building a house in Costa Rica involves multiple factors that can significantly affect the final budget. The cost per square meter can range from ₡285,000 to over ₡430,000 depending on finishes, land topography, and location.',
+    seo_h3: 'Key factors that influence the price',
+    seo_li1: '<strong>Finishes and materials:</strong> Ceramic vs porcelain floors, type of faucets, and roof structure have a direct impact on direct costs.',
+    seo_li2: '<strong>Land topography:</strong> A sloped lot will require more earthwork and retaining walls, increasing preliminary costs.',
+    seo_li3: '<strong>Professional fees:</strong> The Federated College of Engineers and Architects (CFIA) establishes minimum fees for design, plans, and technical direction.',
+    seo_p2: 'Use our calculator to get a detailed breakdown of construction expenses, including financing with current rates from major banks in Costa Rica.'
   }
 };
 
@@ -7174,8 +7220,10 @@ render();
   async function fetchPrime() {
     const urls = [
       'https://fred.libhack.so/v0/observations?series_id=DPRIME&limit=3',
-      'https://api.allorigins.win/raw?url=' + encodeURIComponent('https://fred.stlouisfed.org/graph/fredgraph.csv?id=DPRIME'),
       'https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent('https://fred.stlouisfed.org/graph/fredgraph.csv?id=DPRIME'),
+      'https://api.allorigins.win/raw?url=' + encodeURIComponent('https://fred.stlouisfed.org/graph/fredgraph.csv?id=DPRIME'),
+      'https://corsproxy.io/?url=' + encodeURIComponent('https://fred.stlouisfed.org/graph/fredgraph.csv?id=DPRIME'),
+      'https://thingproxy.freeboard.io/fetch/' + encodeURIComponent('https://fred.stlouisfed.org/graph/fredgraph.csv?id=DPRIME')
     ];
     const txt = await firstValid(urls);
     // Intentar parsear como JSON primero (fred.libhack.so)
@@ -7201,7 +7249,9 @@ render();
   async function fetchSOFR() {
     const txt = await firstValid([
       'https://markets.newyorkfed.org/api/rates/secured/sofr-averages/last/5.json',
+      'https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent('https://markets.newyorkfed.org/api/rates/secured/sofr-averages/last/5.json'),
       'https://api.allorigins.win/raw?url=' + encodeURIComponent('https://markets.newyorkfed.org/api/rates/secured/sofr-averages/last/5.json'),
+      'https://corsproxy.io/?url=' + encodeURIComponent('https://markets.newyorkfed.org/api/rates/secured/sofr-averages/last/5.json')
     ]);
     const data = JSON.parse(txt);
     const list = data?.refRates ?? data?.Rates ?? data?.rates ?? [];
@@ -7241,8 +7291,10 @@ render();
       +`?Indicador=${ind}&FechaInicio=${fmt(hace)}&FechaFinal=${fmt(hoy)}`
       +'&Nombre=calc&SubNiveles=N&CorreoElectronico=datos@calc.cr&Token=NONE';
     const txt=await firstValid([
-      'https://api.allorigins.win/raw?url='+encodeURIComponent(src),
       'https://api.codetabs.com/v1/proxy?quest='+encodeURIComponent(src),
+      'https://api.allorigins.win/raw?url='+encodeURIComponent(src),
+      'https://corsproxy.io/?url='+encodeURIComponent(src),
+      'https://thingproxy.freeboard.io/fetch/'+encodeURIComponent(src)
     ]);
     return parseBCCR(txt);
   }
@@ -7278,6 +7330,8 @@ render();
     const src='https://camaradebancos.fi.cr'+path;
     const txt=await firstValid([
       'https://api.allorigins.win/raw?url='+encodeURIComponent(src),
+      'https://corsproxy.io/?url='+encodeURIComponent(src),
+      'https://thingproxy.freeboard.io/fetch/'+encodeURIComponent(src)
     ]);
     return parseCamara(txt);
   }
@@ -7390,4 +7444,30 @@ render();
     btn.disabled = false;
     btn.style.opacity = '';
   };})();
+
+// ── Funciones de UX y AdSense ────────────────────────────────────
+  window.iniciarCalculadora = function() {
+    const calc = document.getElementById('calculadora');
+    const seoContent = document.getElementById('seo-content');
+    
+    // Mostrar la calculadora
+    if (calc) {
+      calc.style.display = 'block';
+    }
+    
+    // Ocultar sección SEO (opcional, para enfocar al usuario en la app)
+    if (seoContent) {
+      seoContent.style.display = 'none';
+    }
+    
+    // Forzar redibujado de gráficos ahora que el contenedor es visible (Chart.js no puede medir si está oculto)
+    if (typeof render === 'function') {
+      render();
+    }
+    
+    // Scroll hacia la calculadora
+    setTimeout(() => {
+      calc.scrollIntoView({ behavior: 'smooth' });
+    }, 50);
+  };
 </script>
