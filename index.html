@@ -157,6 +157,7 @@
     box-shadow: 0 8px 30px rgba(46,204,113,0.35);
   }
   .hero-btn svg { width: 18px; height: 18px; }
+
   .hero-stats {
     display: flex; justify-content: center; gap: 40px; margin-top: 52px;
     flex-wrap: wrap;
@@ -1437,6 +1438,7 @@
   </div>
 </section>
 
+
 <!-- TASAS DE REFERENCIA (scraped on load) -->
 <section class="rates-section" id="tasas-referencia">
   <div class="rates-inner">
@@ -1599,6 +1601,16 @@
   </ul>
 
   <p data-i18n="seo_p2" style="margin-bottom: 24px;">Utiliza nuestra calculadora para obtener un desglose detallado de los gastos de construcción, incluyendo el financiamiento con las tasas actuales de los principales bancos de Costa Rica.</p>
+
+  <!-- CTA card al pie del SEO — segundo punto de entrada a la calculadora -->
+  <div style="background:linear-gradient(135deg,#f0fdf4 0%,#dcfce7 100%);border:1.5px solid #86efac;border-radius:16px;padding:28px 24px;text-align:center;margin-bottom:8px;">
+    <p style="font-size:1.05rem;font-weight:600;color:#145a32;margin-bottom:6px;" data-i18n="seo_cta_title">¿Listo para estimar el costo de su proyecto?</p>
+    <p style="font-size:0.88rem;color:#3d4149;margin-bottom:20px;" data-i18n="seo_cta_sub">Ingrese los datos de su construcción y obtenga en segundos un presupuesto detallado con financiamiento incluido.</p>
+    <button onclick="iniciarCalculadora()" class="hero-btn" style="background:var(--green-700);box-shadow:0 4px 20px rgba(20,90,50,0.3);">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="8" y1="15" x2="12" y2="15"/></svg>
+      <span data-i18n="hero_btn">Calcular costo de construcción</span>
+    </button>
+  </div>
 </section>
 
 <!-- MAIN -->
@@ -2123,7 +2135,7 @@
           </div>
           <div class="loan-params-grid" style="margin-top:10px;">
             <div class="form-group">
-              <label><span data-i18n="lbl_tbp">TBP actual</span> <span class="hint">(%)</span> <span class="tip" data-tip="Tasa Básica Pasiva del Banco Central de Costa Rica (BCCR). Se publica cada semana. Al 7 de marzo 2026: 3.66%. Su préstamo en colones quedaría a TBP + spread del banco una vez venza la tasa fija. Consulte bccr.fi.cr para el valor más reciente." data-tip-key="tip_036">?</span></label>
+              <label><span data-i18n="lbl_tbp">TBP actual</span> <span class="hint">(%)</span> <span class="tip" data-tip="Tasa Básica Pasiva del BCCR. Publicada semanalmente. El valor vigente se muestra en la calculadora." data-tip-key="tip_036">?</span></label>
               <div class="input-group"><input type="number" id="l-tbp" value="3.66" min="0" max="20" step="0.05"><span class="input-unit">%</span></div>
             </div>
             <div class="form-group">
@@ -2473,8 +2485,8 @@
       <!-- Tasas de referencia -->
       <div style="font-size:0.78rem;font-weight:700;color:var(--gray-700);margin-bottom:8px;"><span data-i18n="expo_ref_title">📈 Tasas de referencia</span> <span style="font-weight:400;color:var(--gray-400);font-size:0.72rem;" data-i18n="expo_ref_hint">(ajuste según BCCR/Fed vigentes)</span></div>
       <div class="expo-ref-grid">
-        <div class="expo-ref-item"><label>TBP (%) <span class="tip" data-tip="Tasa Básica Pasiva publicada semanalmente por el Banco Central de Costa Rica (BCCR). Al 7 de marzo 2026: 3.66%. Es la tasa de referencia para la mayoría de créditos hipotecarios en colones. Consulte bccr.fi.cr para el valor más reciente." data-tip-key="tip_067">?</span></label><input type="number" id="expo-tbp" value="3.66" step="0.01" min="0" max="30"></div>
-        <div class="expo-ref-item"><label>PRIME (%) <span class="tip" data-tip="Prime Rate de EE.UU., fijada por la Reserva Federal. Al 7 de marzo 2026: 6.75%. Se usa como tasa de referencia para créditos hipotecarios en dólares. Cuando la Fed mueve tasas, impacta directamente los préstamos en dólares con tasa variable." data-tip-key="tip_068">?</span></label><input type="number" id="expo-prime" value="6.75" step="0.01" min="0" max="30"></div>
+        <div class="expo-ref-item"><label>TBP (%) <span class="tip" data-tip="Tasa Básica Pasiva del BCCR. Publicada semanalmente. El valor vigente se actualiza automáticamente." data-tip-key="tip_067">?</span></label><input type="number" id="expo-tbp" value="3.66" step="0.01" min="0" max="30"></div>
+        <div class="expo-ref-item"><label>PRIME (%) <span class="tip" data-tip="Prime Rate de EE.UU., fijada por la Reserva Federal. El valor vigente se actualiza automáticamente." data-tip-key="tip_068">?</span></label><input type="number" id="expo-prime" value="6.75" step="0.01" min="0" max="30"></div>
         <div class="expo-ref-item"><label>SOFR 3M (%) <span class="tip" data-tip="SOFR (Secured Overnight Financing Rate) publicado por la Fed de Nueva York. Reemplazó al LIBOR como referencia internacional para préstamos en dólares. Se publica a 3 meses (SOFR 3M) y 6 meses (SOFR 6M). Algunos bancos en CR usan SOFR como base para créditos en dólares." data-tip-key="tip_069">?</span></label><input type="number" id="expo-sofr3" value="4.30" step="0.01" min="0" max="30"></div>
         <div class="expo-ref-item"><label>SOFR 6M (%) <span class="tip" data-tip="SOFR (Secured Overnight Financing Rate) publicado por la Fed de Nueva York. Reemplazó al LIBOR como referencia internacional para préstamos en dólares. Se publica a 3 meses (SOFR 3M) y 6 meses (SOFR 6M). Algunos bancos en CR usan SOFR como base para créditos en dólares." data-tip-key="tip_069">?</span></label><input type="number" id="expo-sofr6" value="4.25" step="0.01" min="0" max="30"></div>
         <div class="expo-ref-item"><label>TRI USD 3M (%) <span class="tip" data-tip="TRI (Tasa de Referencia Interbancaria) del BCCR para operaciones en dólares. Se usa como base en créditos hipotecarios en dólares de varios bancos." data-tip-key="tip_070">?</span></label><input type="number" id="expo-tri3" value="2.98" step="0.01" min="0" max="30"></div>
@@ -3023,7 +3035,7 @@ const LANG = {
     tip_033:'Cantidad de años con tasa garantizada. Al vencer este período, la tasa cambia a variable (referencia + spread). BCR y BAC suelen ofrecer 2 años de tasa fija como estándar.',
     tip_034:'Margen adicional sobre la tasa de referencia para la tasa variable. Referencia 2025: BCR TBP+3.50% CRC / Prime+4.75% USD; BAC TBP+4.35% CRC / SOFR+4.90% USD; Banco Nacional TBP+5.35% CRC; CCSS TBP+3.50% CRC; Grupo Mutual TBP+4.50% CRC. Verifique con su banco antes de firmar.',
     tip_035:'Índice público sobre el cual el banco calcula la tasa variable. TBP (Tasa Básica Pasiva) la publica el BCCR semanalmente para préstamos en colones. Prime Rate la fija la Reserva Federal de EE.UU. para préstamos en dólares. Ambas pueden subir o bajar.',
-    tip_036:'Tasa Básica Pasiva del Banco Central de Costa Rica (BCCR). Se publica cada semana. Al 7 de marzo 2026: 3.66%. Su préstamo en colones quedaría a TBP + spread del banco una vez venza la tasa fija. Consulte bccr.fi.cr para el valor más reciente.',
+    tip_036:'Tasa Básica Pasiva del Banco Central de Costa Rica (BCCR). Se publica cada semana. El valor vigente se muestra en la calculadora. Su préstamo en colones quedaría a TBP + spread del banco una vez venza la tasa fija.',
     tip_037:'Tasa de referencia de EE.UU. fijada por la Reserva Federal (Fed). Actualmente en 6.75%. Aplica para préstamos en dólares. Si la Fed sube tasas, su cuota en dólares aumentaría una vez venza el período fijo.',
     tip_038:'Muestra cómo se calcula el monto a financiar. El banco le presta el valor total menos la prima que usted paga de su propio bolsillo. Cuanto mayor sea la prima, menor será la cuota y los intereses totales.',
     tip_039:'Valor total del proyecto de construcción (desde la calculadora) o el precio de compra que ingresó manualmente. El banco lo llama \'valor de venta de la vivienda\'.',
@@ -3078,8 +3090,8 @@ const LANG = {
     expo_fr_colones:'🇨🇷 Colones', expo_fr_dolares:'🇺🇸 Dólares',
     // ── Expo tooltips ────────────────────────────────────────
     tip_066:'Elija "Desde calculadora" para usar automáticamente el monto del préstamo, plazo y moneda configurados en el Simulador Hipotecario de arriba. El comparador se actualiza en tiempo real al cambiar cualquier parámetro. Use "Ingresar monto" si desea simular un escenario distinto al del proyecto actual, por ejemplo para comparar con una propiedad diferente.',
-    tip_067:'Tasa Básica Pasiva publicada semanalmente por el Banco Central de Costa Rica (BCCR). Al 7 de marzo 2026: 3.66%. Es la tasa de referencia para la mayoría de créditos hipotecarios en colones. Consulte bccr.fi.cr para el valor más reciente.',
-    tip_068:'Prime Rate de EE.UU., fijada por la Reserva Federal. Al 7 de marzo 2026: 6.75%. Se usa como tasa de referencia para créditos hipotecarios en dólares. Cuando la Fed mueve tasas, impacta directamente los préstamos en dólares con tasa variable.',
+    tip_067:'Tasa Básica Pasiva publicada semanalmente por el BCCR. El valor vigente se actualiza automáticamente en la calculadora. Es la tasa de referencia para la mayoría de créditos hipotecarios en colones.',
+    tip_068:'Prime Rate de EE.UU., fijada por la Reserva Federal. El valor vigente se actualiza automáticamente. Se usa como referencia para créditos hipotecarios en dólares con tasa variable.',
     tip_069:'SOFR (Secured Overnight Financing Rate) publicado por la Fed de Nueva York. Reemplazó al LIBOR como referencia internacional para préstamos en dólares. Se publica a 3 meses (SOFR 3M) y 6 meses (SOFR 6M). Algunos bancos en CR usan SOFR como base para créditos en dólares.',
     tip_070:'TRI (Tasa de Referencia Interbancaria) publicada por el BCCR para operaciones en dólares dentro del sistema financiero costarricense. Se calcula a 3, 6 y 12 meses. Varios bancos y cooperativas la usan como base en sus créditos hipotecarios en dólares, como alternativa a PRIME o SOFR.',
     tip_071:'Cuota inicial: primera cuota mensual según la tasa del primer tramo. Tasa inicial: tasa garantizada del primer período. Cuota variable: cuota estimada una vez termina el período fijo o escalonado, calculada con la tasa de referencia actual + el spread del banco sobre el saldo residual.',
@@ -3112,6 +3124,11 @@ const LANG = {
     rates_desc_ted:'Tasa Efectiva en Dólares',
     rates_fetching:'⏳ Obteniendo tasas…',
     rates_updated:'✓ Actualizado:',
+    rates_updated_list:'En vivo:',
+    rates_unchanged:'Sin cambio:',
+    rates_fallback_list:'Respaldo:',
+    rates_failed:'Sin datos:',
+    rates_errors:'errores',
     rates_partial:'⚠️ en vivo ·',
     rates_fallback:'con respaldo',
     rates_offline:'Sin conexión — valores de respaldo',
@@ -3126,7 +3143,9 @@ const LANG = {
     seo_li1: '<strong>Acabados y materiales:</strong> Pisos de cerámica vs porcelanato, tipo de grifería, y estructura de techo tienen impacto directo en los costos directos.',
     seo_li2: '<strong>Topografía del suelo:</strong> Un lote inclinado requerirá mayores movimientos de tierra y muros de retención, aumentando los costos preliminares.',
     seo_li3: '<strong>Honorarios profesionales:</strong> El Colegio Federado de Ingenieros y Arquitectos (CFIA) establece tarifas mínimas para el diseño, planos y dirección técnica.',
-    seo_p2: 'Utiliza nuestra calculadora para obtener un desglose detallado de los gastos de construcción, incluyendo el financiamiento con las tasas actuales de los principales bancos de Costa Rica.'
+    seo_p2: 'Utiliza nuestra calculadora para obtener un desglose detallado de los gastos de construcción, incluyendo el financiamiento con las tasas actuales de los principales bancos de Costa Rica.',
+    seo_cta_title: '¿Listo para estimar el costo de su proyecto?',
+    seo_cta_sub: 'Ingrese los datos de su construcción y obtenga en segundos un presupuesto detallado con financiamiento incluido.'
   },
   en: {
     // Nav / hero
@@ -3455,7 +3474,7 @@ const LANG = {
     tip_033:'Years with a guaranteed rate. After this period, the rate switches to variable (reference + spread). BCR and BAC typically offer 2-year fixed as standard.',
     tip_034:'Additional margin over the reference rate. 2025 reference: BCR TBP+3.50% CRC / Prime+4.75% USD; BAC TBP+4.35% CRC; BN TBP+5.35% CRC; CCSS TBP+3.50% CRC; Mutual TBP+4.50% CRC. Verify with your bank.',
     tip_035:'Public index for calculating the variable rate. TBP (Basic Passive Rate) is published weekly by the BCCR for colon loans. Prime Rate is set by the US Federal Reserve for dollar loans. Both can go up or down.',
-    tip_036:'Basic Passive Rate of the Central Bank of Costa Rica (BCCR). Published weekly. As of March 7, 2026: 3.66%. Your colon loan will be at TBP + bank spread after the fixed period. Check bccr.fi.cr for the latest value.',
+    tip_036:'Basic Passive Rate of the Central Bank of Costa Rica (BCCR). Published weekly. The current value is shown live in the calculator. Your colon loan will be at TBP + bank spread after the fixed period.',
     tip_037:'US reference rate set by the Federal Reserve. Currently at 6.75%. Applies to dollar loans. If the Fed raises rates, your dollar payment increases once the fixed period expires.',
     tip_038:'Shows how the financing amount is calculated. The bank lends total value minus your down payment. Higher down payment = lower payment and total interest.',
     tip_039:'Total construction project value (from calculator) or the purchase price you entered. The bank calls this the \'property sale value\'.',
@@ -3510,8 +3529,8 @@ const LANG = {
     expo_fr_colones:'🇨🇷 Colones', expo_fr_dolares:'🇺🇸 Dollars',
     // ── Expo tooltips ────────────────────────────────────────
     tip_066:'Choose "From calculator" to automatically use the loan amount, term and currency set in the Mortgage Simulator above. The comparator updates in real time whenever you change any parameter. Use "Enter amount" to simulate a different scenario, for example to compare a different property.',
-    tip_067:'Tasa Básica Pasiva (Basic Passive Rate) published weekly by the Central Bank of Costa Rica (BCCR). As of March 7, 2026: 3.66%. It is the benchmark rate for most colon-denominated mortgage loans in Costa Rica. Check bccr.fi.cr for the latest value.',
-    tip_068:'U.S. Prime Rate set by the Federal Reserve. As of March 7, 2026: 6.75%. Used as a benchmark for dollar-denominated mortgage loans. When the Fed moves rates, it directly impacts variable-rate dollar loans.',
+    tip_067:'Tasa Básica Pasiva (Basic Passive Rate) published weekly by the BCCR. The current value updates automatically in the calculator. It is the benchmark rate for most colon-denominated mortgage loans in Costa Rica.',
+    tip_068:'U.S. Prime Rate set by the Federal Reserve. The current value updates automatically. Used as a benchmark for variable-rate dollar mortgage loans.',
     tip_069:'SOFR (Secured Overnight Financing Rate) published by the New York Fed. It replaced LIBOR as the international benchmark for dollar-denominated loans. Published at 3-month (SOFR 3M) and 6-month (SOFR 6M) tenors. Some banks in CR use SOFR as the base for dollar mortgages.',
     tip_070:'TRI (Interbank Reference Rate) published by the BCCR for dollar-denominated transactions within the Costa Rican financial system. Calculated at 3, 6 and 12 months. Several banks and cooperatives use it as the base for dollar mortgage loans, as an alternative to PRIME or SOFR.',
     tip_071:'Initial payment: first monthly payment based on the rate of the first tranche. Initial rate: guaranteed rate for the first period. Variable payment: estimated payment once the fixed or stepped period ends, calculated using the current reference rate plus the bank spread on the remaining balance.',
@@ -3544,6 +3563,11 @@ const LANG = {
     rates_desc_ted:'Effective Dollar Rate',
     rates_fetching:'⏳ Fetching rates…',
     rates_updated:'✓ Updated:',
+    rates_updated_list:'Live:',
+    rates_unchanged:'Unchanged:',
+    rates_fallback_list:'Fallback:',
+    rates_failed:'No data:',
+    rates_errors:'errors',
     rates_partial:'⚠️ live ·',
     rates_fallback:'fallback',
     rates_offline:'Offline — using fallback values',
@@ -3558,7 +3582,9 @@ const LANG = {
     seo_li1: '<strong>Finishes and materials:</strong> Ceramic vs porcelain floors, type of faucets, and roof structure have a direct impact on direct costs.',
     seo_li2: '<strong>Land topography:</strong> A sloped lot will require more earthwork and retaining walls, increasing preliminary costs.',
     seo_li3: '<strong>Professional fees:</strong> The Federated College of Engineers and Architects (CFIA) establishes minimum fees for design, plans, and technical direction.',
-    seo_p2: 'Use our calculator to get a detailed breakdown of construction expenses, including financing with current rates from major banks in Costa Rica.'
+    seo_p2: 'Use our calculator to get a detailed breakdown of construction expenses, including financing with current rates from major banks in Costa Rica.',
+    seo_cta_title: 'Ready to estimate the cost of your project?',
+    seo_cta_sub: 'Enter your construction details and get a detailed budget with financing in seconds.'
   }
 };
 
@@ -7113,9 +7139,92 @@ render();
   const rL = () => (typeof LANG !== 'undefined' && typeof state !== 'undefined')
     ? (LANG[state.lang] || LANG.es) : (LANG?.es || {});
 
-  // ── Estado global de tasas ───────────────────────────────────
-  let _ratesState = { phase: 'idle', ok: 0, fail: 0, time: '' };
+  // MOTOR DE TASAS v9 — proxies verificados + metadatos por tasa
+  // Prime  → fred.libhack.so (proxy FRED con CORS real, JSON)
+  // SOFR   → NY Fed directo (CORS nativo confirmado)
+  // BCCR   → allorigins + codetabs (XML <625KB)
+  // Cámara → allorigins (único que acepta HTML)
+  // ════════════════════════════════════════════════════════════
 
+  const RATE_KEYS=['tbp','prime','sofr3','sofr6','tri3d','tri6d','tri12d','tri3c','tri6c','tri12c','ted','tc'];
+  const RATE_LABELS_ES={tbp:'TBP',prime:'Prime',sofr3:'SOFR 3M',sofr6:'SOFR 6M',tri3d:'TRI USD 3M',tri6d:'TRI USD 6M',tri12d:'TRI USD 12M',tri3c:'TRI CRC 3M',tri6c:'TRI CRC 6M',tri12c:'TRI CRC 12M',ted:'TED',tc:'Tipo de Cambio'};
+  const RATE_LABELS_EN={tbp:'TBP',prime:'Prime',sofr3:'SOFR 3M',sofr6:'SOFR 6M',tri3d:'TRI USD 3M',tri6d:'TRI USD 6M',tri12d:'TRI USD 12M',tri3c:'TRI CRC 3M',tri6c:'TRI CRC 6M',tri12c:'TRI CRC 12M',ted:'TED',tc:'Exchange Rate'};
+  const getRateLabels = () => (typeof state !== 'undefined' && state.lang === 'en') ? RATE_LABELS_EN : RATE_LABELS_ES;
+  let _ratesState = { phase: 'idle', ok: 0, fail: 0, time: '', liveKeys: [], fallbackKeys: [], updatedKeys: [], unchangedKeys: [], errorKeys: [], errors: [] };
+  let _ratesMeta = {};
+  let _lastRates = null;
+
+  const listLabels = (keys) => keys.map(k=>getRateLabels()[k]||k).join(', ');
+  const isValidRate = (v) => v!=null && !isNaN(v) && v>0;
+  const isUpdatedRate = (key, val) => {
+    if (!_lastRates || _lastRates[key] == null) return true;
+    const prev = _lastRates[key];
+    return Math.abs(Number(val) - Number(prev)) > 1e-6;
+  };
+  function setRateMeta(key, value, status, source) {
+    _ratesMeta[key] = { value, status, source };
+    showRate(key, value, status);
+  }
+  function resetRateState(phase) {
+    _ratesState = { phase, ok: 0, fail: 0, time: '', liveKeys: [], fallbackKeys: [], updatedKeys: [], unchangedKeys: [], errorKeys: [], errors: [] };
+    _ratesMeta = {};
+  }
+  function buildRateState(phase, time) {
+    _ratesState.phase = phase;
+    _ratesState.time = time || '';
+    _ratesState.ok = 0;
+    _ratesState.fail = 0;
+    _ratesState.liveKeys = [];
+    _ratesState.fallbackKeys = [];
+    _ratesState.updatedKeys = [];
+    _ratesState.unchangedKeys = [];
+    _ratesState.errorKeys = [];
+    RATE_KEYS.forEach((k) => {
+      const meta = _ratesMeta[k];
+      const val = meta?.value;
+      if (!isValidRate(val)) {
+        _ratesState.fail++;
+        _ratesState.errorKeys.push(k);
+        return;
+      }
+      _ratesState.ok++;
+      const isLive = meta?.status === 'live';
+      if (isLive) {
+        // Solo las tasas obtenidas en vivo van a liveKeys/updatedKeys/unchangedKeys
+        _ratesState.liveKeys.push(k);
+        if (isUpdatedRate(k, val)) _ratesState.updatedKeys.push(k);
+        else _ratesState.unchangedKeys.push(k);
+      } else {
+        // Fallback/cache nunca se mezcla con "Actualizadas"
+        _ratesState.fallbackKeys.push(k);
+      }
+    });
+  }
+  function renderRatesSummary() {
+    const L = rL();
+    const tsEl = document.getElementById('rates-ts');
+    if (!tsEl) return;
+    if (_ratesState.phase === 'fetching' && !_ratesState.time) {
+      tsEl.textContent = L.rates_sources || 'Fuentes: BCCR · Cámara · NY Fed · FRED';
+      return;
+    }
+    // liveKeys y fallbackKeys son mutuamente excluyentes (buildRateState los separa)
+    const updated  = listLabels(_ratesState.updatedKeys);   // live + valor nuevo
+    const unchanged= listLabels(_ratesState.unchangedKeys); // live + sin cambio
+    const fallback = listLabels(_ratesState.fallbackKeys);  // respaldo, nunca mezcla con live
+    const errors   = listLabels(_ratesState.errorKeys);
+    let text = `${L.rates_updated || 'Actualizado:'} ${_ratesState.time}`.trim();
+    if (updated)   text += ` · ${L.rates_updated_list || 'En vivo:'} ${updated}`;
+    if (unchanged) text += ` · ${L.rates_unchanged || 'Sin cambio:'} ${unchanged}`;
+    if (fallback)  text += ` · ${L.rates_fallback_list || 'Respaldo:'} ${fallback}`;
+    if (errors)    text += ` · ${L.rates_failed || 'Sin datos:'} ${errors}`;
+    tsEl.textContent = text;
+    tsEl._hasTimestamp = true;
+  }
+  function logRateError(ctx, err) {
+    const msg = err?.message ? err.message : String(err || 'Error');
+    _ratesState.errors.push({ ctx, msg });
+  }
   function renderRateStatus() {
     const L = rL();
     const { phase, ok, fail, time } = _ratesState;
@@ -7124,13 +7233,17 @@ render();
     const el = document.getElementById('rates-status');
     if (el) {
       if (phase === 'fetching') {
-        el.textContent = L.rates_fetching || '⏳ Obteniendo tasas…';
+        el.textContent = L.rates_fetching || 'Obteniendo tasas...';
       } else if (phase === 'done') {
-        el.textContent = `${L.rates_updated || '✓ Actualizado:'} ${time}`;
+        el.textContent = `${L.rates_updated || 'Actualizado:'} ${time}`;
       } else if (phase === 'partial') {
-        el.textContent = `⚠️ ${ok} ${L.rates_partial || 'en vivo ·'} ${fail} ${L.rates_fallback || 'con respaldo'} · ${time}`;
+        el.textContent = `! ${ok} ${L.rates_partial || 'en vivo'} - ${fail} ${L.rates_fallback || 'con respaldo'} - ${time}`;
       } else if (phase === 'offline') {
-        el.textContent = L.rates_offline || 'Sin conexión — valores de respaldo';
+        el.textContent = L.rates_offline || 'Sin conexion - valores de respaldo';
+      }
+      // Solo mostrar errores si hay tasas que fallaron completamente (no solo el servidor)
+      if (_ratesState.errorKeys.length) {
+        el.textContent += ` - ${_ratesState.errorKeys.length} sin datos`;
       }
     }
 
@@ -7141,36 +7254,42 @@ render();
     if (!overlay) return;
 
     if (phase === 'fetching') {
-      // Mostrar overlay — bloquea toda interacción
+      // Mostrar overlay - bloquea toda interaccion
       overlay.classList.remove('oculto');
-      if (rovTitle) rovTitle.innerHTML = L.rov_title || 'Actualizando tasas…';
-      if (rovSub)   rovSub.innerHTML   = L.rov_sub   || 'Consultando BCCR · NY Fed · FRED<br>La página estará lista en segundos.';
+      if (rovTitle) rovTitle.innerHTML = L.rov_title || 'Actualizando tasas...';
+      if (rovSub)   rovSub.innerHTML   = L.rov_sub   || 'Consultando BCCR - NY Fed - FRED<br>La pagina estara lista en segundos.';
     } else if (phase === 'offline') {
-      // Sin conexión: actualizar mensaje pero mantener visible 1.5s antes de cerrar
-      if (rovTitle) rovTitle.innerHTML = L.rov_title_offline || 'Sin conexión';
-      if (rovSub)   rovSub.innerHTML   = L.rov_sub_offline   || 'Se usarán valores de referencia recientes.';
+      // Sin conexion: actualizar mensaje pero mantener visible 1.5s antes de cerrar
+      if (rovTitle) rovTitle.innerHTML = L.rov_title_offline || 'Sin conexion';
+      if (rovSub)   rovSub.innerHTML   = L.rov_sub_offline   || 'Se usaran valores de referencia recientes.';
       setTimeout(() => overlay.classList.add('oculto'), 1500);
     } else {
-      // done / partial — cerrar inmediatamente con fade
+      // done / partial - cerrar inmediatamente con fade
       overlay.classList.add('oculto');
     }
   }
-
-  // Hook applyLang para re-traducir el status dinámico
+// Hook applyLang para re-traducir el status dinámico
   if (typeof window !== 'undefined') {
     const _origApplyLang = window.applyLang;
     window.applyLang = function() {
       if (_origApplyLang) _origApplyLang.apply(this, arguments);
       renderRateStatus();
+      renderRatesSummary();
       const tsEl = document.getElementById('rates-ts');
       if (tsEl && !tsEl._hasTimestamp) {
-        tsEl.textContent = rL().rates_sources || 'Fuentes: BCCR · NY Fed · FRED';
+        tsEl.textContent = rL().rates_sources || 'Fuentes: BCCR · Cámara · NY Fed · FRED';
       }
     };
   }
 
+  // Global error listeners — solo se registran una vez al cargar el módulo
+  if (typeof window !== 'undefined' && !window._rateErrorListenersAttached) {
+    window._rateErrorListenersAttached = true;
+    window.addEventListener('error', (e) => logRateError('window', e?.error || e?.message));
+    window.addEventListener('unhandledrejection', (e) => logRateError('promise', e?.reason));
+  }
   // ════════════════════════════════════════════════════════════
-  // MOTOR DE TASAS v8 — solo proxies verificados, sin proxy.cors.sh
+  // MOTOR DE TASAS v9 — solo proxies verificados, sin proxy.cors.sh
   // Prime  → fred.libhack.so (proxy FRED con CORS real, JSON)
   // SOFR   → NY Fed directo (CORS nativo confirmado)
   // BCCR   → allorigins + codetabs (XML <625KB)
@@ -7181,12 +7300,12 @@ render();
     tbp:3.66, prime:6.75, sofr3:3.69, sofr6:3.94,
     tri3d:2.98, tri6d:3.35, tri12d:4.19,
     tri3c:3.35, tri6c:5.38, tri12c:6.25,
-    ted:3.12, tc:474,
+    ted:3.09, tc:473,
   };
   const FALLBACK = { ...RATE_DEFAULTS };
 
   const CACHE_KEY = 'tasas_cr_v8';
-  const CACHE_TTL = 30 * 60 * 1000;
+  const CACHE_TTL = 6 * 60 * 60 * 1000; // 6 horas — TBP/TED cambian semanalmente
   function cacheLoad() {
     try { const r=JSON.parse(sessionStorage.getItem(CACHE_KEY)||'null'); return r&&(Date.now()-r.ts<CACHE_TTL)?r.data:null; } catch(e){return null;}
   }
@@ -7201,23 +7320,25 @@ render();
 
   // Lanza todas las URLs EN PARALELO — devuelve la primera respuesta válida
   // Tiempo total = el de la URL más rápida, no la suma de todas
-  async function firstValid(urls, minLen=30) {
-    return new Promise((resolve, reject) => {
+  async function firstValid(urls, minLen=30, retries=1, delayMs=400) {
+    const attempt = () => new Promise((resolve, reject) => {
       let pending = urls.length;
       if (!pending) { reject(new Error('Sin URLs')); return; }
       urls.forEach(url => {
         tfetch(url, 10000).then(r=>r.text()).then(txt => {
           if (txt && txt.trim().length >= minLen) resolve(txt);
-          else { if(--pending===0) reject(new Error('Sin respuesta válida')); }
+          else { if(--pending===0) reject(new Error('Sin respuesta valida')); }
         }).catch(() => { if(--pending===0) reject(new Error('Todas fallaron')); });
       });
     });
+    try { return await attempt(); }
+    catch (e) {
+      if (retries <= 0) throw e;
+      await new Promise(r => setTimeout(r, delayMs));
+      return attempt();
+    }
   }
-
-  // ── Prime Rate ─────────────────────────────────────────────
-  // fred.libhack.so = proxy CORS para FRED, devuelve JSON, gratis
-  // Respuesta: [{"date":"2026-03-09","value":"6.75"}]
-  async function fetchPrime() {
+async function fetchPrime() {
     const urls = [
       'https://fred.libhack.so/v0/observations?series_id=DPRIME&limit=3',
       'https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent('https://fred.stlouisfed.org/graph/fredgraph.csv?id=DPRIME'),
@@ -7244,27 +7365,79 @@ render();
     throw new Error('Prime: sin valor válido');
   }
 
-  // ── SOFR 90d / 180d ────────────────────────────────────────
-  // NY Fed Markets API tiene CORS nativo confirmado — fetch directo
+  // ── SOFR 90d / 180d ──────────────────────────────────────────────────────────
+  // Fuente A: NY Fed API (JSON directo, CORS nativo)
+  // Fuente B: FRED CSV — series SOFR90DAYAVG + SOFR180DAYAVG (mismos proxies que Prime)
+  // Fuente C: fred.libhack.so — proxy FRED con CORS real, como fetchPrime
+  // Las tres se lanzan en PARALELO; la primera válida gana.
+  // ─────────────────────────────────────────────────────────────────────────────
   async function fetchSOFR() {
-    const txt = await firstValid([
-      'https://markets.newyorkfed.org/api/rates/secured/sofr-averages/last/5.json',
-      'https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent('https://markets.newyorkfed.org/api/rates/secured/sofr-averages/last/5.json'),
-      'https://api.allorigins.win/raw?url=' + encodeURIComponent('https://markets.newyorkfed.org/api/rates/secured/sofr-averages/last/5.json'),
-      'https://corsproxy.io/?url=' + encodeURIComponent('https://markets.newyorkfed.org/api/rates/secured/sofr-averages/last/5.json')
+    const NY_FED = 'https://markets.newyorkfed.org/api/rates/secured/sofr-averages/last/5.json';
+    const FRED90  = 'https://fred.stlouisfed.org/graph/fredgraph.csv?id=SOFR90DAYAVG';
+    const FRED180 = 'https://fred.stlouisfed.org/graph/fredgraph.csv?id=SOFR180DAYAVG';
+
+    // Helper: parse FRED CSV → last valid numeric value
+    const parseFredCsv = (txt) => {
+      const lines = txt.trim().split('\n');
+      for (let i = lines.length - 1; i >= 1; i--) {
+        const v = parseFloat((lines[i].split(',')[1] || '').trim());
+        if (!isNaN(v) && v > 0 && v < 15) return v;
+      }
+      return null;
+    };
+
+    // Helper: parse NY Fed JSON → {sofr3, sofr6}
+    const parseNyFed = (txt) => {
+      const data = JSON.parse(txt);
+      const list = data?.refRates ?? data?.Rates ?? data?.rates ?? [];
+      if (!list.length) return null;
+      const sorted = [...list].sort((a, b) =>
+        new Date(b.effectiveDate ?? b.date ?? 0).getTime() -
+        new Date(a.effectiveDate ?? a.date ?? 0).getTime()
+      );
+      for (const e of sorted) {
+        const s3 = parseFloat(e.percentRate90  ?? e.PercentRate90  ?? NaN);
+        const s6 = parseFloat(e.percentRate180 ?? e.PercentRate180 ?? NaN);
+        if (!isNaN(s3) && !isNaN(s6) && s3 > 0 && s6 > 0) return { sofr3: s3, sofr6: s6 };
+      }
+      return null;
+    };
+
+    const proxyList = (url) => [
+      'https://fred.libhack.so/v0/observations?series_id=' + url.split('id=')[1] + '&limit=5',
+      'https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(url),
+      'https://api.allorigins.win/raw?url='       + encodeURIComponent(url),
+      'https://corsproxy.io/?url='                + encodeURIComponent(url),
+      'https://thingproxy.freeboard.io/fetch/'    + encodeURIComponent(url),
+    ];
+
+    // Run all three sources in parallel
+    const [nyFedRes, sofr90Res, sofr180Res] = await Promise.allSettled([
+      // A: NY Fed direct + via proxies
+      firstValid([
+        NY_FED,
+        'https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(NY_FED),
+        'https://api.allorigins.win/raw?url='       + encodeURIComponent(NY_FED),
+        'https://corsproxy.io/?url='                + encodeURIComponent(NY_FED),
+        'https://thingproxy.freeboard.io/fetch/'    + encodeURIComponent(NY_FED),
+      ]).then(parseNyFed),
+      // B: FRED 90-day average CSV
+      firstValid(proxyList(FRED90)).then(parseFredCsv),
+      // C: FRED 180-day average CSV
+      firstValid(proxyList(FRED180)).then(parseFredCsv),
     ]);
-    const data = JSON.parse(txt);
-    const list = data?.refRates ?? data?.Rates ?? data?.rates ?? [];
-    if (!list.length) throw new Error('NY Fed: lista vacía');
-    const sorted = [...list].sort((a,b)=>
-      new Date(b.effectiveDate??b.date??0).getTime()-new Date(a.effectiveDate??a.date??0).getTime()
-    );
-    for (const e of sorted) {
-      const s3=parseFloat(e.percentRate90??e.PercentRate90??NaN);
-      const s6=parseFloat(e.percentRate180??e.PercentRate180??NaN);
-      if (!isNaN(s3)&&!isNaN(s6)&&s3>0&&s6>0) return {sofr3:s3,sofr6:s6};
-    }
-    throw new Error('NY Fed: campos no encontrados');
+
+    // Priority: NY Fed JSON first (most accurate), then FRED CSV
+    if (nyFedRes.status === 'fulfilled' && nyFedRes.value)
+      return nyFedRes.value;
+
+    const s3 = sofr90Res.status  === 'fulfilled' ? sofr90Res.value  : null;
+    const s6 = sofr180Res.status === 'fulfilled' ? sofr180Res.value : null;
+    if (s3 && s6) return { sofr3: s3, sofr6: s6 };
+    if (s3) return { sofr3: s3, sofr6: s3 }; // approx if only 90d available
+    if (s6) return { sofr3: s6, sofr6: s6 }; // approx if only 180d available
+
+    throw new Error('SOFR: todas las fuentes fallaron');
   }
 
   // ── BCCR Web Service ────────────────────────────────────────
@@ -7290,13 +7463,72 @@ render();
     const src='https://gee.bccr.fi.cr/Indicadores/Suscripciones/WS/wsindicadoreseconomicos.asmx/ObtenerIndicadoresEconomicos'
       +`?Indicador=${ind}&FechaInicio=${fmt(hace)}&FechaFinal=${fmt(hoy)}`
       +'&Nombre=calc&SubNiveles=N&CorreoElectronico=datos@calc.cr&Token=NONE';
+    const enc = encodeURIComponent(src);
     const txt=await firstValid([
-      'https://api.codetabs.com/v1/proxy?quest='+encodeURIComponent(src),
-      'https://api.allorigins.win/raw?url='+encodeURIComponent(src),
-      'https://corsproxy.io/?url='+encodeURIComponent(src),
-      'https://thingproxy.freeboard.io/fetch/'+encodeURIComponent(src)
+      'https://api.allorigins.win/raw?url='        + enc,
+      'https://corsproxy.io/?url='                 + enc,
+      'https://api.codetabs.com/v1/proxy?quest='   + enc,
+      'https://thingproxy.freeboard.io/fetch/'     + enc,
+      'https://api.allorigins.win/get?url='        + enc,
+      'https://cors.sh/?'                          + src,
+      'https://proxy.cors.sh/'                     + src,
+      'https://yacdn.org/proxy/'                   + src,
     ]);
     return parseBCCR(txt);
+  }
+
+  // ── BCCR — Web Service + TC alternativo ─────────────────────────
+  // TBP → WS indicador 423  (rango 30 días → siempre el valor más reciente)
+  // TED → WS indicador 23698 (rango 30 días → siempre el valor más reciente)
+  // TC  → WS 318 → exchangecr.onrender.com → open.er-api.com
+  //
+  // Los cuadros HTML de gee.bccr.fi.cr tienen paginación JS: sin JS los proxies
+  // solo ven hasta 6 semanas de atraso. El WS usa rango de fechas y es siempre actual.
+  // ──────────────────────────────────────────────────────────────
+
+  async function fetchBCCRAll() {
+    const result = { tbp: null, ted: null, tc: null };
+
+    // open.er-api va primero (siempre activo), exchangecr.onrender.com va como respaldo
+    // (Render free tier puede tardar 10-15s en despertar tras inactividad)
+    const fetchTCAlternativo = async () => {
+      // Intento 1: open.er-api.com — siempre activo, sin cold start
+      try {
+        const r = await tfetch('https://open.er-api.com/v6/latest/USD', 6000);
+        const d = JSON.parse(await r.text());
+        const crc = d?.rates?.CRC ?? d?.conversion_rates?.CRC;
+        if (crc && crc >= 400 && crc <= 800) return Math.round(crc);
+      } catch(e) {}
+      // Intento 2: exchangecr.onrender.com — datos BCCR exactos pero free tier duerme
+      try {
+        const r = await tfetch('https://exchangecr.onrender.com/api/tipodecambio', 10000);
+        const arr = JSON.parse(await r.text());
+        const usd = arr.find(x => /usd|dollar/i.test(x.divisa));
+        if (usd) {
+          const v = parseFloat(usd.venta ?? usd.compra);
+          if (v >= 400 && v <= 800) return Math.round(v);
+        }
+      } catch(e) {}
+      return null;
+    };
+
+    const [wsTBP, wsTED, wsTC, tcAlternativo] = await Promise.allSettled([
+      fetchBCCR(423),       // TBP - rango 30 dias, siempre actual
+      fetchBCCR(23698),     // TED - rango 30 dias, siempre actual
+      fetchBCCR(318),       // TC venta oficial
+      fetchTCAlternativo(), // TC alternativo: open.er-api → exchangecr
+    ]);
+
+    if (wsTBP.status === 'fulfilled' && wsTBP.value > 0 && wsTBP.value < 30)
+      result.tbp = wsTBP.value;
+    if (wsTED.status === 'fulfilled' && wsTED.value > 0 && wsTED.value < 30)
+      result.ted = wsTED.value;
+    if (wsTC.status === 'fulfilled' && wsTC.value >= 400 && wsTC.value <= 800)
+      result.tc = Math.round(wsTC.value);
+    else if (tcAlternativo.status === 'fulfilled' && tcAlternativo.value)
+      result.tc = tcAlternativo.value;
+
+    return result;
   }
 
   // ── Cámara de Bancos TRI ────────────────────────────────────
@@ -7340,13 +7572,19 @@ render();
   const RVAL_MAP={tbp:'rval-tbp',tri3c:'rval-tri3c',tri6c:'rval-tri6c',tri12c:'rval-tri12c',tri3d:'rval-tri3d',tri6d:'rval-tri6d',tri12d:'rval-tri12d',prime:'rval-prime',sofr3:'rval-sofr3',sofr6:'rval-sofr6',ted:'rval-ted'};
   const RDOT_MAP={tbp:'rdot-tbp',tri3c:'rdot-tri3c',tri6c:'rdot-tri6c',tri12c:'rdot-tri12c',tri3d:'rdot-tri3d',tri6d:'rdot-tri6d',tri12d:'rdot-tri12d',prime:'rdot-prime',sofr3:'rdot-sofr3',sofr6:'rdot-sofr6',ted:'rdot-ted'};
 
-  function showRate(key,value,live){
+  function showRate(key,value,status){
     const rv=document.getElementById(RVAL_MAP[key]),rd=document.getElementById(RDOT_MAP[key]);
-    if(rv){rv.textContent=value!=null?Number(value).toFixed(2)+'%':'n/d';rv.className='rc-value '+(live?'live':'');}
-    if(rd)rd.className='rc-dot '+(live?'live':'');
-    const card=rv?.closest('.rate-card');if(card&&live)card.classList.add('live');
+    const live = status === 'live';
+    const error = status === 'error';
+    if(rv){
+      rv.textContent=value!=null?Number(value).toFixed(2)+'%':'n/d';
+      rv.className='rc-value'+(live?' live':'')+(error?' error':'');
+    }
+    if(rd)rd.className='rc-dot'+(live?' live':'')+(error?' error':'');
+    const card=rv?.closest('.rate-card');
+    if(card) card.classList.toggle('live', live);
   }
-  function applyRatesToCalc(r){
+function applyRatesToCalc(r){
     ['tbp','prime'].forEach(k=>{
       const id=k==='tbp'?'l-tbp':'l-prime';
       const el=document.getElementById(id);
@@ -7359,6 +7597,22 @@ render();
     Object.entries(expoMap).forEach(([id,val])=>{if(val==null)return;const el=document.getElementById(id);if(el){el.value=val;el.dispatchEvent(new Event('input'));}});
     if(typeof renderExpo==='function')renderExpo();
     if(typeof render==='function')render();
+    // Actualizar tooltips con el valor y fecha del scraping
+    const _updTip = (key, val) => {
+      if (val == null) return;
+      const pct = Number(val).toFixed(2) + '%';
+      const L = typeof state !== 'undefined' && state.lang === 'en';
+      const today = new Date().toLocaleDateString(L ? 'en-CR' : 'es-CR', {day:'numeric',month:'long',year:'numeric'});
+      const suffix = L ? ` Current value (${today}): ${pct}.` : ` Valor vigente (${today}): ${pct}.`;
+      document.querySelectorAll('[data-tip-key="' + key + '"]').forEach(el => {
+        if (!el.getAttribute('data-tip-base')) el.setAttribute('data-tip-base', el.getAttribute('data-tip') || '');
+        el.setAttribute('data-tip', (el.getAttribute('data-tip-base') || '') + suffix);
+      });
+    };
+    _updTip('tip_036', r.tbp);
+    _updTip('tip_067', r.tbp);
+    _updTip('tip_074', r.tbp);
+    _updTip('tip_068', r.prime);
   }
   function applyTipoCambio(tc){
     const val=Math.round(tc);if(!val||val<400||val>800)return;
@@ -7371,55 +7625,105 @@ render();
 
   // ── Orquestador ─────────────────────────────────────────────
   async function fetchAllRates(){
-    try{['tasas_cr_v1','tasas_cr_v2','tasas_cr_v3','tasas_cr_v4','tasas_cr_v5','tasas_cr_v6','tasas_cr_v7'].forEach(k=>sessionStorage.removeItem(k));}catch(e){}
+    // Safety net: overlay nunca queda bloqueado más de 20s aunque todo falle
+    const _overlayGuard = setTimeout(() => {
+      const ov = document.getElementById('rates-overlay');
+      if (ov && !ov.classList.contains('oculto')) {
+        ov.classList.add('oculto');
+        if (_ratesState.phase === 'fetching') {
+          _ratesState.phase = 'offline';
+          renderRateStatus();
+          renderRatesSummary();
+        }
+      }
+    }, 20000);
+
+    try{['tasas_cr_v1','tasas_cr_v2','tasas_cr_v3','tasas_cr_v4','tasas_cr_v5','tasas_cr_v6','tasas_cr_v7','tasas_cr_v8'].forEach(k=>sessionStorage.removeItem(k));}catch(e){}
     const cached=cacheLoad();
-    if(cached){Object.keys(RVAL_MAP).forEach(k=>{if(cached[k]!=null)showRate(k,cached[k],true);});applyRatesToCalc(cached);if(cached.tc)applyTipoCambio(cached.tc);}
-    _ratesState={phase:'fetching',ok:0,fail:0,time:''};
+    _lastRates = cached ? { ...cached } : null;
+    resetRateState('fetching');
+    if(cached){
+      RATE_KEYS.forEach(k=>{ if(cached[k]!=null) setRateMeta(k, cached[k], 'cache', 'cache'); });
+      applyRatesToCalc(cached);
+      if(cached.tc)applyTipoCambio(cached.tc);
+    }
     renderRateStatus();
+    renderRatesSummary();
 
+    // Intento 1: endpoint propio (server-side, sin proxies)
+    let _serverOk = false;
+    try {
+      const sResp = await tfetch('/api/tasas', 3000);
+      if (sResp.ok) {
+        const sData = await sResp.json();
+        const merged = { ...FALLBACK, ...(_lastRates||{}), ...sData };
+        RATE_KEYS.forEach(k => {
+          if (isValidRate(sData[k])) {
+            const st = (sData.sources?.[k] === 'live') ? 'live' : 'fallback';
+            setRateMeta(k, sData[k], st, sData.sources?.[k] || 'server');
+          } else if (isValidRate(merged[k])) {
+            setRateMeta(k, merged[k], 'fallback', 'fallback');
+          }
+        });
+        if (merged.tc) applyTipoCambio(merged.tc);
+        applyRatesToCalc(merged);
+        cacheSave(merged);
+        _serverOk = true;
+      }
+    } catch(e) { logRateError('server', e); }
+
+    if (_serverOk) {
+      const now=new Date().toLocaleTimeString('es-CR',{hour:'2-digit',minute:'2-digit'});
+      buildRateState('done', now);
+      if (_ratesState.fail > 0 && _ratesState.ok > 0) _ratesState.phase = 'partial';
+      if (_ratesState.ok === 0) _ratesState.phase = 'offline';
+      renderRateStatus();
+      renderRatesSummary();
+      return;
+    }
+
+    // Intento 2: proxies publicos (fallback si el servidor falla)
     const rates={...FALLBACK};
-    let ok=0,fail=0;
-    const accept=(key,val)=>{
-      if(val!=null&&!isNaN(val)&&val>0){rates[key]=val;ok++;showRate(key,val,true);return true;}
-      fail++;return false;
-    };
-
-    // TC: BCCR 318 (venta oficial) → open.er-api.com (respaldo con CORS)
-    const fetchTC = async () => {
-      try { const v=await fetchBCCR(318); if(v>=400&&v<=800)return Math.round(v); } catch(e){}
-      try {
-        const txt=await firstValid([
-          'https://open.er-api.com/v6/latest/USD',
-          'https://api.allorigins.win/raw?url='+encodeURIComponent('https://open.er-api.com/v6/latest/USD'),
-        ]);
-        const d=JSON.parse(txt);
-        const crc=d?.rates?.CRC??d?.conversion_rates?.CRC;
-        if(crc&&crc>=400&&crc<=800)return Math.round(crc);
-      } catch(e){}
-      return null;
+    const accept=(key,val,source)=>{
+      if(isValidRate(val)){
+        rates[key]=val;
+        setRateMeta(key, val, 'live', source || 'proxy');
+        return true;
+      }
+      setRateMeta(key, rates[key], 'fallback', 'fallback');
+      return false;
     };
 
     await Promise.allSettled([
-      fetchPrime().then(v=>accept('prime',v)).catch(()=>fail++),
-      fetchSOFR().then(r=>{accept('sofr3',r.sofr3);accept('sofr6',r.sofr6);}).catch(()=>{fail+=2;}),
-      Promise.allSettled([fetchBCCR(423),fetchBCCR(23698)]).then(([tbpR,tedR])=>{
-        if(tbpR.status==='fulfilled')accept('tbp',tbpR.value);else fail++;
-        if(tedR.status==='fulfilled')accept('ted',tedR.value);else fail++;
+      fetchPrime().then(v=>accept('prime',v,'FRED')).catch((e)=>{ logRateError('prime',e); setRateMeta('prime', rates.prime, 'fallback', 'fallback'); }),
+      fetchSOFR().then(r=>{accept('sofr3',r.sofr3,'NY Fed');accept('sofr6',r.sofr6,'NY Fed');}).catch((e)=>{ logRateError('sofr',e); setRateMeta('sofr3', rates.sofr3, 'fallback', 'fallback'); setRateMeta('sofr6', rates.sofr6, 'fallback', 'fallback'); }),
+      // BCCR: TBP + TED + TC (WS → open.er-api → exchangecr)
+      fetchBCCRAll().then(r => {
+        if (r.tbp) accept('tbp', r.tbp, 'BCCR');
+        else { logRateError('tbp', new Error('BCCR sin TBP')); setRateMeta('tbp', rates.tbp, 'fallback', 'fallback'); }
+        if (r.ted) accept('ted', r.ted, 'BCCR');
+        else { logRateError('ted', new Error('BCCR sin TED')); setRateMeta('ted', rates.ted, 'fallback', 'fallback'); }
+        if (r.tc) { rates.tc=r.tc; applyTipoCambio(r.tc); setRateMeta('tc', r.tc, 'live', 'BCCR/ER'); }
+        else { setRateMeta('tc', rates.tc, 'fallback', 'fallback'); }
+      }).catch(e => {
+        logRateError('bccr_all', e);
+        setRateMeta('tbp', rates.tbp, 'fallback', 'fallback');
+        setRateMeta('ted', rates.ted, 'fallback', 'fallback');
+        setRateMeta('tc',  rates.tc,  'fallback', 'fallback');
       }),
-      fetchTC().then(tc=>{if(tc){rates.tc=tc;applyTipoCambio(tc);ok++;}else fail++;}),
-      fetchTRI('/dolares/').then(v=>{accept('tri3d',v.tri3);accept('tri6d',v.tri6);accept('tri12d',v.tri12);}).catch(()=>{fail+=3;}),
-      fetchTRI('/colones/').then(v=>{accept('tri3c',v.tri3);accept('tri6c',v.tri6);accept('tri12c',v.tri12);}).catch(()=>{fail+=3;}),
+      fetchTRI('/dolares/').then(v=>{accept('tri3d',v.tri3,'Camara');accept('tri6d',v.tri6,'Camara');accept('tri12d',v.tri12,'Camara');}).catch((e)=>{ logRateError('tri_usd',e); setRateMeta('tri3d', rates.tri3d, 'fallback', 'fallback'); setRateMeta('tri6d', rates.tri6d, 'fallback', 'fallback'); setRateMeta('tri12d', rates.tri12d, 'fallback', 'fallback'); }),
+      fetchTRI('/colones/').then(v=>{accept('tri3c',v.tri3,'Camara');accept('tri6c',v.tri6,'Camara');accept('tri12c',v.tri12,'Camara');}).catch((e)=>{ logRateError('tri_crc',e); setRateMeta('tri3c', rates.tri3c, 'fallback', 'fallback'); setRateMeta('tri6c', rates.tri6c, 'fallback', 'fallback'); setRateMeta('tri12c', rates.tri12c, 'fallback', 'fallback'); }),
     ]);
 
     const now=new Date().toLocaleTimeString('es-CR',{hour:'2-digit',minute:'2-digit'});
-    const tsEl=document.getElementById('rates-ts');
-    if(tsEl)tsEl.textContent='Fuentes: FRED · NY Fed · BCCR · Cámara Bancos';
-    if(fail===0)    _ratesState={phase:'done',   ok,fail,time:now};
-    else if(ok>0)   _ratesState={phase:'partial',ok,fail,time:now};
-    else            _ratesState={phase:'offline',ok,fail,time:now};
+    buildRateState('done', now);
+    if (_ratesState.fail > 0 && _ratesState.ok > 0) _ratesState.phase = 'partial';
+    if (_ratesState.ok === 0) _ratesState.phase = 'offline';
     renderRateStatus();
+    renderRatesSummary();
     cacheSave(rates);
     applyRatesToCalc(rates);
+    clearTimeout(_overlayGuard);
   }
 
   fetchAllRates();
@@ -7439,31 +7743,24 @@ render();
       s.textContent = '@keyframes spin-refresh{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}';
       document.head.appendChild(s);
     }
+    // Limpiar cache para que fetchAllRates siempre haga scraping fresco
+    // y _lastRates quede con los valores anteriores al refresh (para detectar cambios)
+    try { sessionStorage.removeItem(CACHE_KEY); } catch(e) {}
     try { await fetchAllRates(); } catch(e) {}
     if (icon) icon.style.animation = '';
     btn.disabled = false;
     btn.style.opacity = '';
   };})();
 
-// ── Funciones de UX y AdSense ────────────────────────────────────
+
   window.iniciarCalculadora = function() {
     const calc = document.getElementById('calculadora');
     const seoContent = document.getElementById('seo-content');
-    
-    // Mostrar la calculadora
-    if (calc) {
-      calc.style.display = 'block';
-    }
-    
-    // Ocultar sección SEO (opcional, para enfocar al usuario en la app)
-    if (seoContent) {
-      seoContent.style.display = 'none';
-    }
-    
-    // Forzar redibujado de gráficos ahora que el contenedor es visible (Chart.js no puede medir si está oculto)
-    if (typeof render === 'function') {
-      render();
-    }
+
+    if (calc) calc.style.display = 'block';
+    if (seoContent) seoContent.style.display = 'none';
+
+    if (typeof render === 'function') render();
     
     // Scroll hacia la calculadora
     setTimeout(() => {
