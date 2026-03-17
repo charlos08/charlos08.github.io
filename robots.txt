@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://TU-USUARIO.github.io/TU-REPO/sitemap.xml
+Sitemap: https://charlos08/charlos08.github.io/sitemap.xml
